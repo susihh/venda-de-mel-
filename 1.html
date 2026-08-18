@@ -17,24 +17,28 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 100vw;
       height: 100vh;
-      background-color: #ffffff;
+      background-color: #000000;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.5s ease; /* Efeito suave ao sumir */
+      transition: opacity 0.5s ease;
+      overflow: hidden;
     }
 
+    /* Imagem cobrindo 100% da tela */
     #splash-screen img {
-      max-width: 200px;
-      height: auto;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Preenche toda a tela mantendo a proporção */
+      object-position: center; /* Centraliza o foco da imagem */
     }
 
     /* Tela de Apresentação */
     #home-screen {
-      display: none; /* Escondida inicialmente */
+      display: none;
       padding: 20px;
       text-align: center;
     }
@@ -50,7 +54,7 @@
   <!-- 1. TELA DE ABERTURA -->
   <div id="splash-screen">
     <!-- Substitua o src abaixo pelo caminho da sua imagem -->
-    <img src="1.png" alt="Logo do App">
+    <img src="1.png" alt="Abertura do App">
   </div>
 
   <!-- 2. TELA DE APRESENTAÇÃO -->
@@ -65,13 +69,13 @@
       const splash = document.getElementById('splash-screen');
       const home = document.getElementById('home-screen');
 
-      // Efeito visual de esmaecer a abertura
+      // Efeito de esmaecer
       splash.classList.add('hidden');
 
       setTimeout(() => {
-        splash.style.display = 'none'; // Remove completamente a abertura
+        splash.style.display = 'none'; // Esconde a tela de abertura
         home.style.display = 'block';  // Exibe a tela de apresentação
-      }, 500); // Aguarda o fim da animação do CSS
+      }, 500);
 
     }, 5000);
   </script>
