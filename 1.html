@@ -51,11 +51,13 @@
       display: flex;
     }
 
-    /* Banner ocupando 50% da altura da tela */
+    /* Banner ajustado (diminuído para 35% da altura) */
     .banner {
       width: 100%;
-      height: 50vh;
+      height: 35vh;
       overflow: hidden;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
     }
 
     .banner img {
@@ -65,9 +67,9 @@
       object-position: center;
     }
 
-    /* Área de Conteúdo (ocupando o restante da tela) */
+    /* Área de Conteúdo */
     .content-area {
-      padding: 20px;
+      padding: 24px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -78,8 +80,8 @@
     }
 
     .content h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 26px;
+      margin-bottom: 12px;
     }
 
     /* Detalhe em Amarelo */
@@ -91,14 +93,14 @@
       width: 60px;
       height: 4px;
       background-color: #ffcc00;
-      margin: 10px auto;
+      margin: 12px auto;
       border-radius: 2px;
     }
 
     .content p {
-      font-size: 15px;
+      font-size: 16px;
       color: #333333;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     /* Botões com Estilo Amarelo */
@@ -112,8 +114,8 @@
       border-radius: 25px;
       cursor: pointer;
       width: 100%;
-      margin-top: 15px;
-      margin-bottom: 15px;
+      margin-top: 20px;
+      margin-bottom: 10px;
       transition: transform 0.2s, background-color 0.2s;
     }
 
