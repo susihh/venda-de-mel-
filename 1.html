@@ -51,38 +51,31 @@
       display: flex;
     }
 
-    /* Banner mantém 50% da altura da tela */
+    /* Banner ocupando exatamente 50% da altura da tela */
     .banner {
       width: 100%;
       height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      background-color: #f9f9f9;
+      overflow: hidden;
     }
 
-    /* Imagem interna */
+    /* Imagem cobrindo totalmente a metade da tela */
     .banner img {
-      max-width: 80%;
-      max-height: 75%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     /* Área de Conteúdo */
     .content-area {
-      padding: 20px 15px;
+      padding: 15px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
       flex-grow: 1;
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
     }
 
     .content {
@@ -90,8 +83,8 @@
     }
 
     .content h1 {
-      font-size: 24px;
-      margin-bottom: 6px;
+      font-size: 22px;
+      margin-bottom: 4px;
     }
 
     /* Detalhe em Amarelo Escuro (#d4a017) */
@@ -100,45 +93,47 @@
     }
 
     .border-detail {
-      width: 60px;
+      width: 50px;
       height: 4px;
       background-color: #d4a017;
-      margin: 8px auto 16px auto;
+      margin: 6px auto 12px auto;
       border-radius: 2px;
     }
 
-    /* Três blocos maiores */
+    /* Três blocos idênticos em tamanho */
     .cards-container {
       display: flex;
-      gap: 12px;
-      justify-content: space-between;
+      gap: 10px;
+      justify-content: center;
+      align-items: stretch;
       width: 100%;
-      margin-top: 12px;
+      margin-top: 8px;
     }
 
     .card {
-      flex: 1;
+      flex: 1 1 0; /* Garante que os 3 blocos tenham exatamente a mesma largura */
       background-color: #d4a017;
       color: #000000;
-      padding: 18px 10px;
-      min-height: 120px;
+      padding: 16px 8px;
+      min-height: 140px; /* Aumentado a altura do bloco */
       border-radius: 14px;
       text-align: center;
       box-shadow: 0 3px 8px rgba(0,0,0,0.12);
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
 
     .card h3 {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
       margin-bottom: 8px;
       text-transform: uppercase;
     }
 
     .card p {
-      font-size: 12px;
+      font-size: 11px;
       color: #000000;
       line-height: 1.35;
       font-weight: 500;
@@ -161,8 +156,8 @@
       border-radius: 25px;
       cursor: pointer;
       width: 100%;
-      margin-top: 15px;
-      margin-bottom: 10px;
+      margin-top: 12px;
+      margin-bottom: 8px;
       transition: transform 0.2s, background-color 0.2s;
     }
 
@@ -215,7 +210,7 @@
         <h1>Bem-vindo ao <span class="highlight">App</span></h1>
         <div class="border-detail"></div>
 
-        <!-- Três blocos maiores -->
+        <!-- Três blocos com tamanho idêntico -->
         <div class="cards-container">
           <div class="card">
             <h3>Como Funciona</h3>
