@@ -51,14 +51,13 @@
       display: flex;
     }
 
-    /* Banner ocupando exatamente 50% da altura da tela */
+    /* Banner ocupando 50% da altura da tela */
     .banner {
       width: 100%;
       height: 50vh;
       overflow: hidden;
     }
 
-    /* Imagem cobrindo totalmente a metade da tela */
     .banner img {
       width: 100%;
       height: 100%;
@@ -68,7 +67,7 @@
 
     /* Área de Conteúdo */
     .content-area {
-      padding: 15px;
+      padding: 12px 15px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -76,15 +75,20 @@
       flex-grow: 1;
       width: 100%;
       max-width: 500px;
+      height: 50vh;
     }
 
     .content {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
     }
 
     .content h1 {
-      font-size: 22px;
-      margin-bottom: 4px;
+      font-size: 20px;
+      margin-bottom: 2px;
     }
 
     /* Detalhe em Amarelo Escuro (#d4a017) */
@@ -93,29 +97,30 @@
     }
 
     .border-detail {
-      width: 50px;
-      height: 4px;
+      width: 40px;
+      height: 3px;
       background-color: #d4a017;
-      margin: 6px auto 12px auto;
+      margin: 4px auto 8px auto;
       border-radius: 2px;
     }
 
-    /* Três blocos idênticos em tamanho */
+    /* Três blocos ampliados ocupando a maior parte do espaço */
     .cards-container {
       display: flex;
       gap: 10px;
       justify-content: center;
       align-items: stretch;
       width: 100%;
-      margin-top: 8px;
+      flex-grow: 1;
+      margin-top: 4px;
+      margin-bottom: 8px;
     }
 
     .card {
-      flex: 1 1 0; /* Garante que os 3 blocos tenham exatamente a mesma largura */
+      flex: 1 1 0;
       background-color: #d4a017;
       color: #000000;
-      padding: 16px 8px;
-      min-height: 140px; /* Aumentado a altura do bloco */
+      padding: 12px 8px;
       border-radius: 14px;
       text-align: center;
       box-shadow: 0 3px 8px rgba(0,0,0,0.12);
@@ -128,14 +133,14 @@
     .card h3 {
       font-size: 13px;
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       text-transform: uppercase;
     }
 
     .card p {
       font-size: 11px;
       color: #000000;
-      line-height: 1.35;
+      line-height: 1.3;
       font-weight: 500;
     }
 
@@ -143,21 +148,23 @@
       font-size: 15px;
       color: #333333;
       line-height: 1.4;
+      margin-top: 20px;
     }
 
-    /* Botão Preto com texto Amarelo Escuro */
+    /* Botão reduzido */
     .btn-black {
       background-color: #000000;
       color: #d4a017;
       border: 2px solid #000000;
-      padding: 14px 32px;
-      font-size: 16px;
+      padding: 8px 20px;
+      font-size: 14px;
       font-weight: bold;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
-      width: 100%;
-      margin-top: 12px;
-      margin-bottom: 8px;
+      width: auto;
+      min-width: 160px;
+      margin-top: 4px;
+      margin-bottom: 6px;
       transition: transform 0.2s, background-color 0.2s;
     }
 
@@ -171,12 +178,13 @@
       background-color: #d4a017;
       color: #000000;
       border: none;
-      padding: 14px 32px;
-      font-size: 16px;
+      padding: 10px 24px;
+      font-size: 14px;
       font-weight: bold;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
-      width: 100%;
+      width: auto;
+      min-width: 160px;
       margin-top: 15px;
       margin-bottom: 10px;
       transition: transform 0.2s, background-color 0.2s;
@@ -210,7 +218,7 @@
         <h1>Bem-vindo ao <span class="highlight">App</span></h1>
         <div class="border-detail"></div>
 
-        <!-- Três blocos com tamanho idêntico -->
+        <!-- Três blocos que expandem para ocupar a maior parte do espaço -->
         <div class="cards-container">
           <div class="card">
             <h3>Como Funciona</h3>
