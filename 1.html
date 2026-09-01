@@ -1,287 +1,358 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burger & Cia - Lanchonete Artesanal</title>
-  <style>
-    :root {
-      --primary: #ff4757;
-      --secondary: #ffa502;
-      --dark: #2f3542;
-      --light: #f1f2f6;
-      --whatsapp: #25d366;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mel Puro & Natural - O Sabor da Natureza</title>
+  <style>
+    :root {
+      --primary: #FFB703;    /* Amarelo Ouro */
+      --secondary: #FB8500;  /* Amarelo Alaranjado */
+      --dark: #1A1A1A;       /* Preto */
+      --light: #FFFFFF;      /* Branco */
+      --brown: #5C3D2E;      /* Marrom */
+      --brown-light: #8D5B4C;/* Marrom Claro */
+      --whatsapp: #25d366;
+    }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
 
-    body {
-      background-color: var(--light);
-      color: var(--dark);
-    }
+    body {
+      background-color: #FAFAFA;
+      color: var(--dark);
+    }
 
-    /* Hero Header */
-    header {
-      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
-                  url('https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 100px 20px 80px;
-    }
+    /* Tela de Abertura (Splash Screen) */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--dark);
+      color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
+    #splash-screen h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-    header p {
-      font-size: 1.25rem;
-      margin-bottom: 30px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    #splash-screen p {
+      font-size: 1.3rem;
+      color: var(--light);
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
 
-    /* Botão Principal */
-    .btn-whatsapp {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background-color: var(--whatsapp);
-      color: white;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      transition: transform 0.2s, background-color 0.2s;
-    }
+    .btn-skip {
+      background-color: var(--primary);
+      color: var(--dark);
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+    }
 
-    .btn-whatsapp:hover {
-      transform: scale(1.05);
-      background-color: #1eb954;
-    }
+    .btn-skip:hover {
+      background-color: var(--secondary);
+      transform: scale(1.05);
+    }
 
-    /* Seção Cardápio */
-    .container {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
+    /* Conteúdo Principal da Loja */
+    #main-content {
+      display: none; /* Oculto até a tela de abertura sumir */
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2.5rem;
-      color: var(--dark);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    /* Hero Header */
+    header {
+      background: linear-gradient(rgba(26, 26, 26, 0.75), rgba(26, 26, 26, 0.75)), 
+                  url('https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: var(--light);
+      text-align: center;
+      padding: 100px 20px 80px;
+      border-bottom: 5px solid var(--primary);
+    }
 
-    .category-title {
-      font-size: 1.8rem;
-      margin: 40px 0 20px;
-      color: var(--primary);
-      border-bottom: 3px solid var(--secondary);
-      padding-bottom: 8px;
-    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
+    header p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--light);
+    }
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
-    }
+    /* Botão Principal */
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--whatsapp);
+      color: var(--light);
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s, background-color 0.2s;
+    }
 
-    .card:hover {
-      transform: translateY(-8px);
-    }
+    .btn-whatsapp:hover {
+      transform: scale(1.05);
+      background-color: #1eb954;
+    }
 
-    .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
+    /* Seção Catálogo */
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
 
-    .card-content {
-      padding: 20px;
-    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: var(--brown);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-    .card-title {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
+    .category-title {
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+      color: var(--brown);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 8px;
+    }
 
-    .card-desc {
-      color: #666;
-      font-size: 0.95rem;
-      line-height: 1.4;
-      margin-bottom: 15px;
-    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
 
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .card {
+      background: var(--light);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E0E0E0;
+      transition: transform 0.3s ease;
+    }
 
-    .card-price {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: var(--primary);
-    }
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+    }
 
-    /* Botão Flutuante */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: var(--whatsapp);
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: transform 0.2s;
-    }
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
 
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-    }
+    .card-content {
+      padding: 20px;
+    }
 
-    footer {
-      background-color: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 60px;
-    }
+    .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
 
-    footer p {
-      margin-bottom: 5px;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-  </style>
+    .card-desc {
+      color: var(--brown-light);
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--brown);
+    }
+
+    /* Botão Flutuante */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--whatsapp);
+      color: var(--light);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      background-color: var(--dark);
+      color: var(--light);
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+      border-top: 4px solid var(--primary);
+    }
+
+    footer p {
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: #CCC;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>Burger & Cia</h1>
-    <p>Hambúrgueres artesanais, porções crocantes e os melhores milkshakes da cidade.</p>
-    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido." class="btn-whatsapp" target="_blank">
-      🍔 Fazer Pedido no WhatsApp
-    </a>
-  </header>
+  <div id="splash-screen">
+    <h1>🍯 Mel Puro & Natural</h1>
+    <p>Bem-vindo ao nosso apiário! Aguarde um momento para conhecer nossos produtos 100% naturais...</p>
+    <button class="btn-skip" onclick="entrarNaLoja()">Entrar na Loja Agora</button>
+  </div>
 
-  <main class="container">
-    <h2 class="section-title">Cardápio</h2>
-    
-    <h3 class="category-title">🍔 Lanches</h3>
-    <div class="menu-grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Hambúrguer Artesanal">
-        <div class="card-content">
-          <h3 class="card-title">X-Monster Artesanal</h3>
-          <p class="card-desc">Hambúrguer de 180g, cheddar fatiado, bacon crocante e molho especial no pão brioche.</p>
-          <div class="card-footer">
-            <span class="card-price">R$ 32,90</span>
-          </div>
-        </div>
-      </div>
+  <div id="main-content">
+    <header>
+      <h1>Mel Puro & Natural</h1>
+      <p>Produtos das abelhas diretos do produtor para a sua mesa. Qualidade, pureza e sabor incomparável.</p>
+      <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20comprar%20mel." class="btn-whatsapp" target="_blank">
+        🍯 Comprar pelo WhatsApp
+      </a>
+    </header>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80" alt="Hambúrguer Duplo">
-        <div class="card-content">
-          <h3 class="card-title">Duplo Bacon Cheese</h3>
-          <p class="card-desc">Dois hambúrgueres de 120g, dobro de queijo prato, bacon e maionese da casa.</p>
-          <div class="card-footer">
-            <span class="card-price">R$ 36,90</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <main class="container">
+      <h2 class="section-title">Nossos Produtos</h2>
+      
+      <h3 class="category-title">🐝 Méis Especiais</h3>
+      <div class="menu-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=600&q=80" alt="Mel Silvestre">
+          <div class="card-content">
+            <h3 class="card-title">Mel Silvestre 500g</h3>
+            <p class="card-desc">Mel puro de florada silvestre, rico em minerais e com sabor encorpado.</p>
+            <div class="card-footer">
+              <span class="card-price">R$ 35,00</span>
+            </div>
+          </div>
+        </div>
 
-    <h3 class="category-title">🍟 Porções</h3>
-    <div class="menu-grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=600&q=80" alt="Batata Frita Especial">
-        <div class="card-content">
-          <h3 class="card-title">Batata Suprema</h3>
-          <p class="card-desc">Porção grande de batatas palito cobertas com molho cheddar cremoso e farofa de bacon.</p>
-          <div class="card-footer">
-            <span class="card-price">R$ 24,90</span>
-          </div>
-        </div>
-      </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=600&q=80" alt="Mel de Eucalipto">
+          <div class="card-content">
+            <h3 class="card-title">Mel de Eucalipto 1kg</h3>
+            <p class="card-desc">Ideal para o sistema respiratório, possui sabor marcante e aroma intenso.</p>
+            <div class="card-footer">
+              <span class="card-price">R$ 60,00</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1625938146369-ad80241392b4?auto=format&fit=crop&w=600&q=80" alt="Anéis de Cebola">
-        <div class="card-content">
-          <h3 class="card-title">Onion Rings</h3>
-          <p class="card-desc">Anéis de cebola empanados e crocantes, acompanhados de molho barbecue artesanal.</p>
-          <div class="card-footer">
-            <span class="card-price">R$ 21,90</span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <h3 class="category-title">Favo & Derivados</h3>
+      <div class="menu-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80" alt="Mel no Favo">
+          <div class="card-content">
+            <h3 class="card-title">Mel no Favo 300g</h3>
+            <p class="card-desc">Favo 100% natural com mel fresco, perfeito para consumir in natura.</p>
+            <div class="card-footer">
+              <span class="card-price">R$ 42,00</span>
+            </div>
+          </div>
+        </div>
 
-    <h3 class="category-title">🥤 Bebidas & Sobremesas</h3>
-    <div class="menu-grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80" alt="Milkshake">
-        <div class="card-content">
-          <h3 class="card-title">Milkshake de Nutella</h3>
-          <p class="card-desc">Milkshake artesanal de 500ml com borda de Nutella, sorvete premium e chantilly.</p>
-          <div class="card-footer">
-            <span class="card-price">R$ 18,90</span>
-          </div>
-        </div>
-      </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=600&q=80" alt="Própolis Verde">
+          <div class="card-content">
+            <h3 class="card-title">Extrato de Própolis Verde</h3>
+            <p class="card-desc">Extrato de alta concentração para fortalecer sua imunidade diariamente (30ml).</p>
+            <div class="card-footer">
+              <span class="card-price">R$ 28,00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Refrigerante Gelado">
-        <div class="card-content">
-          <h3 class="card-title">Refrigerante Lata</h3>
-          <p class="card-desc">Lata de 350ml bem gelada. Opções: Coca-Cola, Guaraná Antarctica ou Sprite.</p>
-          <div class="card-footer">
-            <span class="card-price">R$ 6,50</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+    <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido." class="whatsapp-float" target="_blank" title="Atendimento via WhatsApp">
+      💬
+    </a>
 
-  <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido." class="whatsapp-float" target="_blank" title="Atendimento via WhatsApp">
-    💬
-  </a>
+    <footer>
+      <p><strong>Mel Puro & Natural</strong> - Do apiário para sua família.</p>
+      <p>Estrada das Abelhas, S/N - Zona Rural | Tel: (00) 90000-0000</p>
+    </footer>
+  </div>
 
-  <footer>
-    <p><strong>Burger & Cia</strong> - O sabor que você merece.</p>
-    <p>Rua das Lanchonetes, 123 - Centro | Tel: (00) 90000-0000</p>
-  </footer>
+  <script>
+    function entrarNaLoja() {
+      const splash = document.getElementById('splash-screen');
+      const main = document.getElementById('main-content');
+      
+      splash.style.opacity = '0';
+      splash.style.visibility = 'hidden';
+      
+      setTimeout(() => {
+        splash.style.display = 'none';
+        main.style.display = 'block';
+        setTimeout(() => {
+          main.style.opacity = '1';
+        }, 50);
+      }, 800);
+    }
+
+    // Aguarda 5 minutos (300.000 milissegundos) para fechar automaticamente
+    setTimeout(entrarNaLoja, 300000);
+  </script>
 
 </body>
 </html>
