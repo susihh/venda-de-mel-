@@ -48,6 +48,7 @@
 
     #splash-logo {
       max-width: 400px;
+      width: 90%;
       margin-bottom: 20px;
     }
 
@@ -253,9 +254,8 @@
 
   <!-- Tela de Abertura (Splash Screen) -->
   <div id="splash-screen">
-    <!-- Logomarca adicionada aqui -->
-    <img src="image_0.png" id="splash-logo" alt="Logomarca Mel">
-    <p>Bem-vindo ao nosso apiário! Aguarde um momento para conhecer nossos produtos 100% naturais...</p>
+    <img src="2..png" id="splash-logo" alt="Logomarca Mel">
+    <p>Bem-vindo ao nosso apiário! Redirecionando para a loja...</p>
     <button class="btn-skip" onclick="entrarNaLoja()">Entrar na Loja Agora</button>
   </div>
 
@@ -350,9 +350,8 @@
       }, 800);
     }
 
-    // Aguarda 5 minutos (300.000 milissegundos) para fechar automaticamente
-    // setTimeout(entrarNaLoja, 300000); 
-    // Comentado para visualização imediata da tela. Descomente a linha acima para reativar o tempo.
+    // Configurado para fechar automaticamente após 5 segundos (5000 milissegundos)
+    setTimeout(entrarNaLoja, 5000);
   </script>
 
 </body>
