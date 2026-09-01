@@ -46,12 +46,9 @@
       transition: opacity 0.8s ease, visibility 0.8s;
     }
 
-    #splash-screen h1 {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    #splash-logo {
+      max-width: 400px;
+      margin-bottom: 20px;
     }
 
     #splash-screen p {
@@ -254,12 +251,15 @@
 </head>
 <body>
 
+  <!-- Tela de Abertura (Splash Screen) -->
   <div id="splash-screen">
-    <h1>🍯 Mel Puro & Natural</h1>
+    <!-- Logomarca adicionada aqui -->
+    <img src="image_0.png" id="splash-logo" alt="Logomarca Mel">
     <p>Bem-vindo ao nosso apiário! Aguarde um momento para conhecer nossos produtos 100% naturais...</p>
     <button class="btn-skip" onclick="entrarNaLoja()">Entrar na Loja Agora</button>
   </div>
 
+  <!-- Página de Vendas -->
   <div id="main-content">
     <header>
       <h1>Mel Puro & Natural</h1>
@@ -351,7 +351,8 @@
     }
 
     // Aguarda 5 minutos (300.000 milissegundos) para fechar automaticamente
-    setTimeout(entrarNaLoja, 300000);
+    // setTimeout(entrarNaLoja, 300000); 
+    // Comentado para visualização imediata da tela. Descomente a linha acima para reativar o tempo.
   </script>
 
 </body>
