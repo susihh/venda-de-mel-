@@ -42,12 +42,15 @@
       z-index: 9999;
       transition: opacity 0.8s ease, visibility 0.8s;
       cursor: pointer;
+      overflow: hidden;
     }
 
+    /* Imagem da primeira página cobrindo a tela inteira */
     #splash-logo {
-      max-width: 80%;
-      max-height: 80%;
-      object-fit: contain;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
     }
 
     #main-content {
@@ -56,10 +59,10 @@
       transition: opacity 0.8s ease;
     }
 
-    /* Hero Header com a imagem 2..png no fundo */
+    /* Cabeçalho com a imagem cobrindo todo o espaço (cover) */
     header {
-      background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), 
-                  url('2..png') center/contain no-repeat,
+      background: linear-gradient(rgba(26, 26, 26, 0.75), rgba(26, 26, 26, 0.75)), 
+                  url('2..png') center/cover no-repeat,
                   var(--dark);
       color: var(--light);
       text-align: center;
@@ -350,7 +353,7 @@
 
   <script>
     let timerSplash = null;
-    const PHONE_NUMBER = "5500000000000"; // Substitua pelo seu número com DDD
+    const PHONE_NUMBER = "5500000000000";
 
     function entrarNaLoja() {
       if (timerSplash) clearTimeout(timerSplash);
