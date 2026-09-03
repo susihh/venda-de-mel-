@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apiário Dourado — Mel Artesanal</title>
+  <meta name="description" content="Mel artesanal puro, direto das colmeias até a sua mesa. Floradas naturais, feito à mão." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --amber-50: #fffaf0;
+      --amber-100: #fff7e6;
+      --amber-200: #fde68a;
+      --amber-400: #fbbf24;
+      --amber-600: #d97706;
+      --amber-700: #b45309;
+      --amber-800: #92400e;
+      --amber-900: #78350f;
+      --brown-900: #3a2a12;
+      --green-wa: #25D366;
+      --green-wa-dark: #1ebe5d;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--amber-50);
+      color: var(--brown-900);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(255, 250, 240, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #fde68a;
+    }
+    .header-inner {
+      max-width: 72rem; margin: 0 auto; padding: 1rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-left { display: flex; align-items: center; gap: 0.75rem; }
+    .back-btn {
+      display: none; width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+      background: var(--amber-100); align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: var(--amber-200); }
+    .back-btn svg { width: 1.25rem; height: 1.25rem; color: var(--amber-800); }
+    .logo-link { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-icon {
+      width: 2.75rem; height: 2.75rem; border-radius: 9999px;
+      background: linear-gradient(135deg, var(--amber-400), var(--amber-600));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+    }
+    .logo-icon svg { width: 1.5rem; height: 1.5rem; color: #fff; }
+    .logo-text { line-height: 1.2; }
+    .logo-text h1 { font-size: 1.25rem; font-weight: 700; color: var(--amber-800); letter-spacing: -0.02em; }
+    .logo-text p { font-size: 0.75rem; color: rgba(180, 83, 9, 0.7); }
+
+    .hero { position: relative; overflow: hidden; padding: 3.5rem 1.25rem 5rem; }
+    .hero-inner {
+      max-width: 72rem; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--amber-100); color: var(--amber-800);
+      font-size: 0.75rem; font-weight: 600; padding: 0.375rem 0.75rem;
+      border-radius: 9999px; margin-bottom: 1.25rem;
+    }
+    .hero-badge svg { width: 0.875rem; height: 0.875rem; }
+    .hero h2 { font-size: 2.25rem; font-weight: 700; line-height: 1.15; color: var(--brown-900); }
+    .hero h2 span { color: var(--amber-600); }
+    .hero p.desc { margin-top: 1.25rem; font-size: 1.125rem; color: rgba(120, 53, 15, 0.7); max-width: 28rem; }
+    .hero-features { margin-top: 2rem; display: flex; gap: 1.5rem; font-size: 0.875rem; color: rgba(146, 64, 14, 0.7); }
+    .hero-features span { display: flex; align-items: center; gap: 0.375rem; }
+    .hero-features svg { width: 1rem; height: 1rem; color: var(--amber-600); }
+    .hero-cta {
+      margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--amber-600); color: #fff; font-weight: 500;
+      padding: 0.75rem 1.5rem; border-radius: 9999px;
+      transition: background 0.2s; box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+      cursor: pointer; border: none; font-size: 1rem;
+    }
+    .hero-cta:hover { background: var(--amber-700); }
+    .hero-image { border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px rgba(251, 191, 36, 0.3); border: 1px solid #fde68a; }
+    .hero-image img { width: 100%; height: 26rem; object-fit: cover; display: block; }
+    .hero-blob {
+      position: absolute; top: -6rem; right: -6rem; width: 18rem; height: 18rem;
+      border-radius: 9999px; background: rgba(253, 230, 138, 0.4);
+      filter: blur(60px); pointer-events: none;
+    }
+
+    .catalog { padding: 4rem 1.25rem; background: linear-gradient(to bottom, var(--amber-100), var(--amber-50)); }
+    .catalog-inner { max-width: 72rem; margin: 0 auto; }
+    .catalog-header { text-align: center; margin-bottom: 3rem; }
+    .catalog-header .label { color: var(--amber-600); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .catalog-header h2 { font-size: 2rem; font-weight: 700; margin-top: 0.5rem; color: var(--brown-900); }
+    .catalog-header p { margin-top: 0.75rem; color: rgba(120, 53, 15, 0.6); max-width: 36rem; margin-left: auto; margin-right: auto; }
+    .products-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .product-card {
+      background: #fff; border-radius: 1rem; overflow: hidden; border: 1px solid #fde68a;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow 0.3s, transform 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover { box-shadow: 0 10px 25px rgba(251, 191, 36, 0.2); transform: translateY(-2px); }
+    .product-img-wrap { overflow: hidden; background: var(--amber-100); }
+    .product-img-wrap img { width: 100%; height: 14rem; object-fit: cover; transition: transform 0.5s; }
+    .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+    .product-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
+    .product-body h3 { font-size: 1.125rem; font-weight: 700; color: var(--brown-900); line-height: 1.3; }
+    .product-body p { margin-top: 0.5rem; font-size: 0.875rem; color: rgba(120, 53, 15, 0.6); flex: 1; }
+    .product-price { margin-top: 1rem; font-size: 1.5rem; font-weight: 700; color: var(--amber-700); }
+    .catalog-cta { margin-top: 3.5rem; text-align: center; }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--green-wa); color: #fff; font-size: 1.125rem; font-weight: 600;
+      padding: 1rem 2rem; border-radius: 9999px; transition: background 0.2s;
+      box-shadow: 0 10px 15px rgba(37, 211, 102, 0.2);
+    }
+    .wa-btn:hover { background: var(--green-wa-dark); }
+    .wa-btn svg { width: 1.5rem; height: 1.5rem; }
+    .catalog-cta p { margin-top: 0.75rem; font-size: 0.875rem; color: rgba(120, 53, 15, 0.5); }
+
+    .site-footer { background: var(--brown-900); color: rgba(255, 251, 235, 0.8); }
+    .footer-inner {
+      max-width: 72rem; margin: 0 auto; padding: 1.5rem 1.25rem;
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 0.5rem; }
+    .footer-brand .icon {
+      width: 2rem; height: 2rem; border-radius: 9999px;
+      background: linear-gradient(135deg, var(--amber-400), var(--amber-600));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .footer-brand .icon svg { width: 1rem; height: 1rem; color: #fff; }
+    .footer-brand p { font-size: 0.875rem; font-weight: 700; color: #fffbeb; }
+    .footer-social { display: flex; gap: 0.5rem; }
+    .footer-social a {
+      width: 2rem; height: 2rem; border-radius: 9999px; background: rgba(255, 251, 235, 0.1);
+      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .footer-social a:hover { background: rgba(255, 251, 235, 0.2); }
+    .footer-social svg { width: 1rem; height: 1rem; }
+    .footer-bottom { border-top: 1px solid rgba(255, 251, 235, 0.1); padding: 0.75rem 1.25rem; text-align: center; font-size: 0.6875rem; color: rgba(255, 251, 235, 0.5); }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    @media (min-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr 1fr; }
+      .hero-content { order: 1; }
+      .hero-image-wrap { order: 2; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="#home" class="back-btn" id="backBtn" aria-label="Voltar para a página inicial">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </a>
+        <a href="#home" class="logo-link" id="logoLink">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+          </div>
+          <div class="logo-text">
+            <h1>Apiário Dourado</h1>
+            <p>Mel artesanal, puro de verdade</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section id="home" class="section active hero">
+    <div class="hero-blob"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="hero-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          100% puro · Sem aditivos
+        </span>
+        <h2>O mel que vem direto das <span>colmeias</span> até a sua mesa.</h2>
+        <p class="desc">Produzido com cuidado artesanal em nosso apiário, cada pote guarda o sabor, o aroma e a pureza que só a natureza pode oferecer.</p>
+        <div class="hero-features">
+          <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg> Floradas naturais</span>
+          <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg> Feito à mão</span>
+        </div>
+        <button class="hero-cta" onclick="showSection('catalog')">Ver catálogo</button>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-image">
+          <img src="https://media.base44.com/images/public/6a985d3c5efa5f2a264ac36c/e7e465d6a_generated_a94069af.jpg" alt="Pote de mel artesanal dourado com favos de mel" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" class="section catalog">
+    <div class="catalog-inner">
+      <div class="catalog-header">
+        <p class="label">Nosso Catálogo</p>
+        <h2>Escolha o seu mel favorito</h2>
+        <p>Cada florada tem um sabor único. Toque em comprar e finalize seu pedido direto pelo WhatsApp.</p>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+      <div class="catalog-cta">
+        <a href="#" class="wa-btn" id="waMainBtn" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          Comprar pelo WhatsApp
+        </a>
+        <p>Atendimento rápido e direto · Tire dúvidas e finalize seu pedido</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>
+        </div>
+        <p>Apiário Dourado</p>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" id="footerWa" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.044z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Apiário Dourado · Todos os direitos reservados</div>
+  </footer>
+
+  <script>
+    var WHATSAPP_NUMBER = "https://wa.me/seunumero";
+    var products = [
+      { name: "Mel de Florada Silvestre 500g", description: "Sabor suave e floral, coletado de flores nativas. Rico em antioxidantes e ideal para o dia a dia.", price: "R$ 32,90", image: "https://media.base44.com/images/public/6a985d3c5efa5f2a264ac36c/a0810f85a_generated_0099c2c9.jpg" },
+      { name: "Mel de Eucalipto 500g", description: "Tom ambarado e aroma marcante. Tradicionalmente usado para aliviar o conforto respiratório.", price: "R$ 36,90", image: "https://media.base44.com/images/public/6a985d3c5efa5f2a264ac36c/ef3a782ce_generated_13f2a8ba.jpg" },
+      { name: "Mel de Laranjeira 500g", description: "Cor clara e doçura delicada com notas cítricas. Perfeito para chás e sobremesas.", price: "R$ 38,90", image: "https://media.base44.com/images/public/6a985d3c5efa5f2a264ac36c/40912cad8_generated_090acfa3.jpg" },
+      { name: "Extrato de Própolis 30ml", description: "Concentrado natural de própolis, aliado da imunidade e do bem-estar. Puro e sem aditivos.", price: "R$ 29,90", image: "https://media.base44.com/images/public/6a985d3c5efa5f2a264ac36c/b2ed94dca_generated_bc8c6da6.jpg" }
+    ];
+
+    function buildWhatsAppLink(productName) {
+      return WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Olá! Tenho interesse no produto: " + productName + ". Gostaria de finalizar a compra.");
+    }
+
+    var grid = document.getElementById("productsGrid");
+    products.forEach(function(p) {
+      var card = document.createElement("article");
+      card.className = "product-card";
+      card.innerHTML = '<div class="product-img-wrap"><img src="' + p.image + '" alt="' + p.name + '" /></div><div class="product-body"><h3>' + p.name + '</h3><p>' + p.description + '</p><p class="product-price">' + p.price + '</p></div>';
+      grid.appendChild(card);
+    });
+
+    document.getElementById("waMainBtn").href = buildWhatsAppLink("qualquer produto");
+    document.getElementById("footerWa").href = buildWhatsAppLink("qualquer produto");
+
+    function showSection(name) {
+      document.querySelectorAll(".section").forEach(function(s) { s.classList.remove("active"); });
+      document.getElementById(name).classList.add("active");
+      document.getElementById("backBtn").style.display = (name === "catalog") ? "flex" : "none";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.getElementById("logoLink").addEventListener("click", function(e) { e.preventDefault(); showSection("home"); });
+    document.getElementById("backBtn").addEventListener("click", function(e) { e.preventDefault(); showSection("home"); });
+  </script>
+</body>
+</html>
+
